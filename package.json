@@ -1,0 +1,45 @@
+{
+  "name": "gerald-agent-harness",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.json --noEmit",
+    "dev:api": "tsx apps/api/src/server.ts",
+    "dev:harness": "tsx apps/api/src/text-harness.ts",
+    "dev:worker": "tsx apps/worker/src/worker.ts",
+    "lint": "eslint . --max-warnings=0",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx packages/db/src/migrate.ts",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/pg": "^8.15.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@typescript-eslint/parser": "^8.34.0",
+    "eslint": "^9.28.0",
+    "prettier": "^3.5.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.0.1",
+    "@fastify/helmet": "^13.0.1",
+    "argon2": "^0.41.1",
+    "dotenv": "^16.5.0",
+    "drizzle-kit": "^0.31.4",
+    "drizzle-orm": "^0.44.2",
+    "fastify": "^5.4.0",
+    "next": "^15.3.3",
+    "pg": "^8.16.0",
+    "pg-boss": "^12.5.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zod": "^3.25.67"
+  }
+}

@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: gerald
+          POSTGRES_PASSWORD: gerald
+          POSTGRES_DB: gerald
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U gerald -d gerald"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 11 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: node node_modules/typescript/bin/tsc -p tsconfig.json --noEmit
+      - run: node node_modules/vitest/vitest.mjs run
+      - run: pnpm --dir apps/console build
+      - run: pnpm exec prettier --check .
+      - run: pnpm audit --audit-level high
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

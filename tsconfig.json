@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@gerald/contracts": ["packages/contracts/src/index.ts"],
+      "@gerald/config": ["packages/config/src/index.ts"],
+      "@gerald/security": ["packages/security/src/index.ts"],
+      "@gerald/db": ["packages/db/src/index.ts"],
+      "@gerald/policy": ["packages/policy/src/index.ts"],
+      "@gerald/memory": ["packages/memory/src/index.ts"],
+      "@gerald/tasks": ["packages/tasks/src/index.ts"],
+      "@gerald/runtime": ["packages/runtime/src/index.ts"],
+      "@gerald/google": ["packages/connectors-google/src/index.ts"],
+      "@gerald/email": ["packages/connectors-email/src/index.ts"]
+    }
+  },
+  "include": ["apps/api/**/*.ts", "apps/worker/**/*.ts", "packages/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["node_modules", ".next", "dist", "apps/console"]
+}

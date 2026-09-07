@@ -1,0 +1,33 @@
+:root {
+  color-scheme: dark;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  background: #111827;
+  color: #f9fafb;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 24px 0 40px;
+}
+section {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 14px;
+  padding: 22px;
+  margin: 16px 0;
+}
+small {
+  color: #9ca3af;
+}

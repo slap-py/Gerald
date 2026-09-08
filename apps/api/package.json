@@ -5,5 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@gerald/config": "workspace:*",
+    "@gerald/contracts": "workspace:*",
+    "@gerald/email": "workspace:*",
+    "@gerald/google": "workspace:*",
+    "@gerald/runtime": "workspace:*",
+    "@gerald/security": "workspace:*"
   }
 }

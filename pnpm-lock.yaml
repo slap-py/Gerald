@@ -81,31 +81,115 @@ importers:
         specifier: ^3.2.4
         version: 3.2.7(@types/node@22.20.1)(supports-color@7.2.0)(tsx@4.23.13)
 
-  apps/api: {}
+  apps/api:
+    dependencies:
+      '@gerald/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@gerald/email':
+        specifier: workspace:*
+        version: link:../../packages/connectors-email
+      '@gerald/google':
+        specifier: workspace:*
+        version: link:../../packages/connectors-google
+      '@gerald/runtime':
+        specifier: workspace:*
+        version: link:../../packages/runtime
+      '@gerald/security':
+        specifier: workspace:*
+        version: link:../../packages/security
 
   apps/console: {}
 
-  apps/worker: {}
+  apps/worker:
+    dependencies:
+      '@gerald/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@gerald/runtime':
+        specifier: workspace:*
+        version: link:../../packages/runtime
 
-  packages/config: {}
+  packages/config:
+    dependencies:
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../contracts
 
-  packages/connectors-email: {}
+  packages/connectors-email:
+    dependencies:
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@gerald/security':
+        specifier: workspace:*
+        version: link:../security
 
-  packages/connectors-google: {}
+  packages/connectors-google:
+    dependencies:
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@gerald/runtime':
+        specifier: workspace:*
+        version: link:../runtime
+      '@gerald/security':
+        specifier: workspace:*
+        version: link:../security
 
   packages/contracts: {}
 
   packages/db: {}
 
-  packages/memory: {}
+  packages/memory:
+    dependencies:
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@gerald/security':
+        specifier: workspace:*
+        version: link:../security
 
-  packages/policy: {}
+  packages/policy:
+    dependencies:
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../contracts
 
-  packages/runtime: {}
+  packages/runtime:
+    dependencies:
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@gerald/memory':
+        specifier: workspace:*
+        version: link:../memory
+      '@gerald/policy':
+        specifier: workspace:*
+        version: link:../policy
+      '@gerald/security':
+        specifier: workspace:*
+        version: link:../security
+      '@gerald/tasks':
+        specifier: workspace:*
+        version: link:../tasks
 
   packages/security: {}
 
-  packages/tasks: {}
+  packages/tasks:
+    dependencies:
+      '@gerald/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@gerald/security':
+        specifier: workspace:*
+        version: link:../security
 
 packages:
   '@drizzle-team/brocli@0.10.2':

@@ -5,5 +5,12 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@gerald/contracts": "workspace:*",
+    "@gerald/memory": "workspace:*",
+    "@gerald/policy": "workspace:*",
+    "@gerald/security": "workspace:*",
+    "@gerald/tasks": "workspace:*"
   }
 }

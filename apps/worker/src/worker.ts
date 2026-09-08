@@ -23,9 +23,17 @@ function railwayPostgresOptions(): ConstructorOptions | undefined {
   return options;
 }
 
+function publicPostgresUrl(): { connection: string; host: string } | undefined {
+  const connection = process.env.DATABASE_PUBLIC_URL?.trim();
+  if (!connection) return undefined;
+  const host = new URL(connection).hostname;
+  return isLoopbackHost(host) ? undefined : { connection, host };
+}
+
 function resolveDatabaseConnection():
   { connection: string | ConstructorOptions; host: string } | undefined {
   const railwayOptions = railwayPostgresOptions();
+  const publicDatabase = publicPostgresUrl();
   if (config.databaseUrl) {
     const configuredHost = new URL(config.databaseUrl).hostname;
     if (
@@ -35,9 +43,11 @@ function resolveDatabaseConnection():
     ) {
       return { connection: railwayOptions, host: railwayOptions.host };
     }
+    if (publicDatabase && isLoopbackHost(configuredHost)) return publicDatabase;
     return { connection: config.databaseUrl, host: configuredHost };
   }
   if (railwayOptions?.host) return { connection: railwayOptions, host: railwayOptions.host };
+  if (publicDatabase) return publicDatabase;
   return undefined;
 }
 
